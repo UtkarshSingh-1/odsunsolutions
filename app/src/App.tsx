@@ -96,22 +96,8 @@ function Navigation() {
   return (
     <>
       {/* Desktop Navigation */}
-      <nav className="fixed top-6 left-6 right-6 z-50 hidden md:flex items-center justify-between">
-        <div className="h-16 w-auto flex items-center">
-          <video
-            className="h-16 w-auto"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            aria-hidden="true"
-          >
-            <source src="/media/logoanimation.webm" type="video/webm" />
-            <source src="/media/logoanimation.mp4" type="video/mp4" />
-          </video>
-        </div>
-        <div className="nav-pill rounded-full px-6 py-3 flex items-center gap-6">
+      <nav className="fixed top-6 left-6 right-6 z-50 hidden md:flex items-center justify-end pointer-events-none">
+        <div className="nav-pill rounded-full px-6 py-3 flex items-center gap-6 pointer-events-auto">
           {navItems.map((item) => (
             <Link
               key={item.path}
@@ -134,24 +120,10 @@ function Navigation() {
       </nav>
 
       {/* Mobile Navigation */}
-      <div className="fixed top-6 left-6 right-6 z-50 md:hidden flex items-center justify-between">
-        <div className="h-16 w-auto flex items-center">
-          <video
-            className="h-16 w-auto"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            aria-hidden="true"
-          >
-            <source src="/media/logoanimation.webm" type="video/webm" />
-            <source src="/media/logoanimation.mp4" type="video/mp4" />
-          </video>
-        </div>
+      <div className="fixed top-6 left-6 right-6 z-50 md:hidden flex items-center justify-end pointer-events-none">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="nav-pill rounded-full p-3"
+          className="nav-pill rounded-full p-3 pointer-events-auto"
         >
           {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>

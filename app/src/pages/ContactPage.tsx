@@ -468,9 +468,20 @@ export default function ContactPage() {
       <footer className="py-12 border-t border-white/10">
         <div className="container mx-auto px-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="text-2xl font-light tracking-wider">
-              ODSUN<span className="text-cyan-400">SOLUTIONS</span>
-            </div>
+          <div className="text-2xl font-light tracking-wider">
+              <video
+                className="h-12 w-auto"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                aria-hidden="true"
+              >
+                <source src="/media/logoanimation.webm" type="video/webm" />
+                <source src="/media/logoanimation.mp4" type="video/mp4" />
+              </video>
+          </div>
             <div className="flex gap-8 text-sm text-gray-400">
               <Link to="/" className="hover:text-white transition-colors">Home</Link>
               <Link to="/portfolio" className="hover:text-white transition-colors">Work</Link>

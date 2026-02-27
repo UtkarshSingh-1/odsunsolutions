@@ -398,17 +398,19 @@ export default function PortfolioPage() {
 
   return (
     <div ref={containerRef} className="relative min-h-screen bg-black">
-      <ParticleBackground />
+      <div className="pointer-events-none">
+        <ParticleBackground />
+      </div>
       
       {/* Header */}
       <motion.header 
-        className="fixed top-0 left-0 right-0 z-40 px-8 py-6 bg-black/80 backdrop-blur-lg"
+        className="fixed top-0 left-0 right-0 z-50 px-8 py-6 bg-black/80 backdrop-blur-lg pointer-events-auto"
         style={{ opacity: headerOpacity, y: headerY }}
       >
         <div className="flex justify-between items-center">
           <Link 
             to="/" 
-            className="text-sm text-gray-400 hover:text-white transition-colors flex items-center gap-2"
+            className="text-sm text-gray-400 hover:text-white transition-colors flex items-center gap-2 z-50 relative"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Home
@@ -590,9 +592,20 @@ export default function PortfolioPage() {
       <footer className="py-12 border-t border-white/10">
         <div className="container mx-auto px-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="text-2xl font-light tracking-wider">
-              ODSUN<span className="text-cyan-400">SOLUTIONS</span>
-            </div>
+          <div className="text-2xl font-light tracking-wider">
+              <video
+                className="h-12 w-auto"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                aria-hidden="true"
+              >
+                <source src="/media/logoanimation.webm" type="video/webm" />
+                <source src="/media/logoanimation.mp4" type="video/mp4" />
+              </video>
+          </div>
             <div className="flex gap-8 text-sm text-gray-400">
               <Link to="/" className="hover:text-white transition-colors">Home</Link>
               <Link to="/portfolio" className="hover:text-white transition-colors">Work</Link>

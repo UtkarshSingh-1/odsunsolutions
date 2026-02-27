@@ -491,6 +491,20 @@ function HeroSection() {
       className="relative h-screen w-full"
       style={{ minHeight: '100vh' }}
     >
+      <div className="absolute top-6 left-6 z-20">
+        <video
+          className="h-16 w-auto"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+        >
+          <source src="/media/logoanimation.webm" type="video/webm" />
+          <source src="/media/logoanimation.mp4" type="video/mp4" />
+        </video>
+      </div>
       {/* CTA Button */}
       <motion.div 
         className="absolute bottom-20 left-12 z-20"
@@ -1101,7 +1115,18 @@ function Footer() {
       <div className="container mx-auto px-8">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-2xl font-light tracking-wider">
-            ODSUN<span className="text-cyan-400">SOLUTIONS</span>
+            <video
+              className="h-12 w-auto"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              aria-hidden="true"
+            >
+              <source src="/media/logoanimation.webm" type="video/webm" />
+              <source src="/media/logoanimation.mp4" type="video/mp4" />
+            </video>
           </div>
           
           <div className="flex gap-8 text-sm text-gray-400">
