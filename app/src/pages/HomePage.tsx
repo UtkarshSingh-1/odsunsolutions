@@ -704,7 +704,7 @@ function ServicesSection() {
 }
 
 // Portfolio Section
-function PortfolioSection({ sectionRef }: { sectionRef?: RefObject<HTMLDivElement> }) {
+function PortfolioSection({ sectionRef }: { sectionRef?: RefObject<HTMLDivElement | null> }) {
   return (
     <section ref={sectionRef} className="relative min-h-screen pt-0 pb-20 mt-32">
       <div className="container mx-auto px-8">
