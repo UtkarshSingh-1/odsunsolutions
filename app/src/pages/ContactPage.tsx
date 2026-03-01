@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Send, Check, Mail, Phone, MapPin, Linkedin, Twitter, Instagram, Github, MessageCircle } from 'lucide-react';
 import gsap from 'gsap';
+import { submitContactLead } from '@/lib/contact';
 
 // Particle background
 function ParticleBackground() {
@@ -190,12 +191,23 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+
+    try {
+      await submitContactLead({
+        source: 'contact-page',
+        name: formData.name,
+        email: formData.email,
+        company: formData.company,
+        budget: formData.budget,
+        message: formData.message,
+        services: selectedServices,
+      });
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error('Contact page submission failed', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -392,11 +404,11 @@ export default function ContactPage() {
                 <h3 className="text-lg font-light mb-4">Contact Info</h3>
                 <div className="space-y-4">
                   <a 
-                    href="mailto:hello@activetheory.net" 
+                    href="mailto:contact@odsunsolutions.in" 
                     className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors"
                   >
                     <Mail className="w-5 h-5 text-cyan-400" />
-                    hello@activetheory.net
+                    contact@odsunsolutions.in
                   </a>
                   <a 
                     href="tel:+919250818908" 

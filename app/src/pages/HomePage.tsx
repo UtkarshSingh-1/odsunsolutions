@@ -7,6 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion, useScroll } from 'framer-motion';
 import { ArrowRight, ExternalLink, X, Send, Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { submitContactLead } from '@/lib/contact';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -80,12 +81,10 @@ const services = [
 
 // Portfolio projects
 const portfolioProjects = [
-  { id: 1, title: 'PAPER PLANES', client: 'Google', category: 'websites', image: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800&q=80' },
-  { id: 2, title: 'SUSTAINABLE HORIZONS', client: 'WSJ', category: 'websites', image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80' },
-  { id: 3, title: 'E.C.H.O.', client: 'U.S. Air Force', category: 'xr', image: 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800&q=80' },
-  { id: 4, title: 'MILLION PIECE MISSION', client: 'U.S. Air Force', category: 'games', image: 'https://images.unsplash.com/photo-1614728853913-1e22ba0e982b?w=800&q=80' },
-  { id: 5, title: 'DISCOVER YOUR PATRONUS', client: 'Harry Potter', category: 'xr', image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80' },
-  { id: 6, title: 'PROMETHEUS', client: '', category: 'games', image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80' },
+  { id: 1, title: 'ASHMARK', client: 'Ashmark', category: 'websites', image: 'https://image.thum.io/get/width/1200/https://www.ashmark.in' },
+  { id: 2, title: 'NIVIRRAS COLLECTIONS', client: 'Nivirras Collections', category: 'websites', image: 'https://image.thum.io/get/width/1200/https://www.nivirrascollections.site' },
+  { id: 3, title: 'ASTROBYAB', client: 'Astrobyab', category: 'websites', image: 'https://image.thum.io/get/width/1200/https://www.astrobyab.in' },
+  { id: 4, title: 'EYE MEDIA SOLUTION', client: 'Eye Media Solution', category: 'websites', image: 'https://image.thum.io/get/width/1200/https://eyemediasolution.vercel.app' },
 ];
 
 // 3D Logo Component - Scroll-based animation
@@ -997,9 +996,19 @@ function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    await new Promise(resolve => setTimeout(resolve, 1200));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    try {
+      await submitContactLead({
+        source: 'home',
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+      });
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error('Home contact submission failed', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -1012,10 +1021,13 @@ function ContactSection() {
               Tell us about your project and we&apos;ll get back to you quickly.
             </p>
             <div className="space-y-4 text-sm text-gray-400">
-              <div className="flex items-center gap-3">
+              <a
+                href="mailto:contact@odsunsolutions.in"
+                className="flex items-center gap-3 hover:text-white transition-colors"
+              >
                 <Mail className="w-4 h-4 text-cyan-400" />
-                hello@activetheory.net
-              </div>
+                contact@odsunsolutions.in
+              </a>
               <div className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-cyan-400" />
                 +91 9250818908

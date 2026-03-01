@@ -6,158 +6,63 @@ import gsap from 'gsap';
 
 // Portfolio projects data
 const projects = [
-  { 
-    id: 1, 
-    title: 'PAPER PLANES', 
-    client: 'Google', 
+  {
+    id: 1,
+    title: 'ASHMARK',
+    client: 'Ashmark',
     category: 'websites',
-    year: '2023',
-    description: 'An interactive web experience that allows users to create and throw digital paper planes across the world.',
-    technologies: ['WebGL', 'Three.js', 'React'],
-    awards: ['FWA Site of the Day', 'Awwwards SOTD'],
-    image: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800&q=80',
-    color: '#00d4ff'
+    year: '2026',
+    description: 'Official website for Ashmark.',
+    technologies: ['Website'],
+    awards: [],
+    image: 'https://image.thum.io/get/width/1200/https://www.ashmark.in',
+    color: '#22d3ee',
+    url: 'https://www.ashmark.in'
   },
-  { 
-    id: 2, 
-    title: 'SUSTAINABLE HORIZONS', 
-    client: 'WSJ', 
+  {
+    id: 2,
+    title: 'NIVIRRAS COLLECTIONS',
+    client: 'Nivirras Collections',
     category: 'websites',
-    year: '2023',
-    description: 'A data visualization project exploring the future of sustainable energy and climate solutions.',
-    technologies: ['D3.js', 'React', 'Node.js'],
-    awards: ['Webby Award Nominee'],
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80',
-    color: '#4ade80'
+    year: '2026',
+    description: 'Official website for Nivirras Collections.',
+    technologies: ['Website'],
+    awards: [],
+    image: 'https://image.thum.io/get/width/1200/https://www.nivirrascollections.site',
+    color: '#34d399',
+    url: 'https://www.nivirrascollections.site'
   },
-  { 
-    id: 3, 
-    title: 'E.C.H.O.', 
-    client: 'U.S. Air Force', 
-    category: 'xr',
-    year: '2022',
-    description: 'Extended Reality training simulation for next-generation aircraft maintenance.',
-    technologies: ['Unity', 'VR', 'AI'],
-    awards: ['Innovation Award'],
-    image: 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800&q=80',
-    color: '#a855f7'
-  },
-  { 
-    id: 4, 
-    title: 'MILLION PIECE MISSION', 
-    client: 'U.S. Air Force', 
-    category: 'games',
-    year: '2022',
-    description: 'A collaborative puzzle game where millions of users work together to complete a mission.',
-    technologies: ['WebGL', 'Socket.io', 'Node.js'],
-    awards: ['FWA Site of the Day'],
-    image: 'https://images.unsplash.com/photo-1614728853913-1e22ba0e982b?w=800&q=80',
-    color: '#fbbf24'
-  },
-  { 
-    id: 5, 
-    title: 'DISCOVER YOUR PATRONUS', 
-    client: 'Harry Potter', 
-    category: 'xr',
-    year: '2021',
-    description: 'An immersive AR experience that reveals your magical guardian spirit.',
-    technologies: ['ARKit', 'ARCore', 'Unity'],
-    awards: ['Campaign of the Year'],
-    image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80',
-    color: '#f472b6'
-  },
-  { 
-    id: 6, 
-    title: 'PROMETHEUS', 
-    client: '', 
-    category: 'games',
-    year: '2021',
-    description: 'A narrative-driven exploration game set in a procedurally generated universe.',
-    technologies: ['Unity', 'Procedural Generation'],
-    awards: ['Indie Game Award'],
-    image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80',
-    color: '#f87171'
-  },
-  { 
-    id: 7, 
-    title: 'CHILE 20', 
-    client: 'Adidas', 
+  {
+    id: 3,
+    title: 'ASTROBYAB',
+    client: 'Astrobyab',
     category: 'websites',
-    year: '2020',
-    description: 'Interactive product launch experience for the Chile 20 football boot.',
-    technologies: ['WebGL', 'React', 'GSAP'],
-    awards: ['Awwwards SOTD'],
-    image: 'https://images.unsplash.com/photo-1556906781-9a412961c28c?w=800&q=80',
-    color: '#60a5fa'
+    year: '2026',
+    description: 'Official website for Astrobyab.',
+    technologies: ['Website'],
+    awards: [],
+    image: 'https://image.thum.io/get/width/1200/https://www.astrobyab.in',
+    color: '#f59e0b',
+    url: 'https://www.astrobyab.in'
   },
-  { 
-    id: 8, 
-    title: 'WELCOME TO HOGWARTS', 
-    client: 'Harry Potter', 
-    category: 'xr',
-    year: '2020',
-    description: 'A magical VR tour of the iconic wizarding school.',
-    technologies: ['VR', 'Unity', 'Spatial Audio'],
-    awards: ['VR Experience of the Year'],
-    image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800&q=80',
-    color: '#a855f7'
-  },
-  { 
-    id: 9, 
-    title: 'KANDINSKY', 
-    client: 'Google', 
+  {
+    id: 4,
+    title: 'EYE MEDIA SOLUTION',
+    client: 'Eye Media Solution',
     category: 'websites',
-    year: '2019',
-    description: 'An AI-powered art creation tool inspired by the abstract master.',
-    technologies: ['TensorFlow.js', 'Canvas API', 'React'],
-    awards: ['AI Innovation Award'],
-    image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=800&q=80',
-    color: '#34d399'
-  },
-  { 
-    id: 10, 
-    title: 'FRONTIER WITHIN', 
-    client: 'The Frontier', 
-    category: 'websites',
-    year: '2019',
-    description: 'An immersive documentary experience exploring the human body.',
-    technologies: ['WebGL', 'Three.js', 'Video'],
-    awards: ['Emmy Nomination'],
-    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
-    color: '#fbbf24'
-  },
-  { 
-    id: 11, 
-    title: 'RACER', 
-    client: 'Google', 
-    category: 'games',
-    year: '2018',
-    description: 'A cross-device racing game playable across multiple screens.',
-    technologies: ['WebSockets', 'Canvas', 'Node.js'],
-    awards: ['Chrome Experiment'],
-    image: 'https://images.unsplash.com/photo-1511994714008-b6d68a8b32a2?w=800&q=80',
-    color: '#f87171'
-  },
-  { 
-    id: 12, 
-    title: 'HARMONIC STATE', 
-    client: 'IBM', 
-    category: 'installations',
-    year: '2018',
-    description: 'An interactive installation visualizing quantum computing concepts.',
-    technologies: ['Projection Mapping', 'Sensors', 'OpenFrameworks'],
-    awards: ['SXSW Interactive Award'],
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80',
-    color: '#60a5fa'
+    year: '2026',
+    description: 'Official website for Eye Media Solution.',
+    technologies: ['Website'],
+    awards: [],
+    image: 'https://image.thum.io/get/width/1200/https://eyemediasolution.vercel.app',
+    color: '#60a5fa',
+    url: 'https://eyemediasolution.vercel.app'
   },
 ];
 
 const categories = [
   { id: 'all', label: 'All Projects' },
   { id: 'websites', label: 'Websites' },
-  { id: 'installations', label: 'Installations' },
-  { id: 'xr', label: 'XR / VR' },
-  { id: 'games', label: 'Games' },
 ];
 
 // Particle background
@@ -353,10 +258,15 @@ function ProjectModal({ project, onClose }: { project: typeof projects[0]; onClo
           )}
           
           <div className="flex gap-4">
-            <button className="flex-1 py-4 rounded-full bg-cyan-500 text-black font-medium hover:bg-cyan-400 transition-colors flex items-center justify-center gap-2">
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noreferrer"
+              className="flex-1 py-4 rounded-full bg-cyan-500 text-black font-medium hover:bg-cyan-400 transition-colors flex items-center justify-center gap-2"
+            >
               View Live Project
               <ExternalLink className="w-5 h-5" />
-            </button>
+            </a>
             <Link
               to="/contact"
               className="flex-1 py-4 rounded-full border border-white/20 hover:bg-white/10 transition-colors flex items-center justify-center gap-2"
