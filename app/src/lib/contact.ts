@@ -8,19 +8,10 @@ type ContactPayload = {
   services?: string[];
 };
 
-const BREVO_WEBHOOK_URL = import.meta.env.VITE_BREVO_WEBHOOK_URL?.trim();
-const CONTACT_ENDPOINT = import.meta.env.VITE_CONTACT_ENDPOINT?.trim() || '/api/contact';
+const CONTACT_ENDPOINT = '/api/contact';
 
 export async function submitContactLead(payload: ContactPayload): Promise<void> {
-  // Local dev fallback when backend endpoint is not configured.
-  if (import.meta.env.DEV && !BREVO_WEBHOOK_URL && !import.meta.env.VITE_CONTACT_ENDPOINT) {
-    await new Promise(resolve => setTimeout(resolve, 1200));
-    return;
-  }
-
-  const targetUrl = BREVO_WEBHOOK_URL || CONTACT_ENDPOINT;
-
-  const response = await fetch(targetUrl, {
+  const response = await fetch(CONTACT_ENDPOINT, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -29,6 +20,22 @@ export async function submitContactLead(payload: ContactPayload): Promise<void> 
   });
 
   if (!response.ok) {
-    throw new Error(`Contact submission failed: ${response.status}`);
+    if (response.status === 404) {
+      throw new Error('Contact API not found (404).');
+    }
+
+    let details = '';
+    try {
+      const data = await response.json();
+      details = data?.error || data?.details || '';
+    } catch {
+      // Ignore JSON parse errors and use status-only fallback.
+    }
+
+    throw new Error(
+      details
+        ? `Contact submission failed: ${details}`
+        : `Contact submission failed: ${response.status}`
+    );
   }
 }

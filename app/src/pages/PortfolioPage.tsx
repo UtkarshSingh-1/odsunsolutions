@@ -15,7 +15,7 @@ const projects = [
     description: 'Official website for Ashmark.',
     technologies: ['Website'],
     awards: [],
-    image: 'https://image.thum.io/get/width/1200/https://www.ashmark.in',
+    image: '/media/Ashmark.png',
     color: '#22d3ee',
     url: 'https://www.ashmark.in'
   },
@@ -28,7 +28,7 @@ const projects = [
     description: 'Official website for Nivirras Collections.',
     technologies: ['Website'],
     awards: [],
-    image: 'https://image.thum.io/get/width/1200/https://www.nivirrascollections.site',
+    image: '/media/NivirrasCollections.png',
     color: '#34d399',
     url: 'https://www.nivirrascollections.site'
   },
@@ -41,7 +41,7 @@ const projects = [
     description: 'Official website for Astrobyab.',
     technologies: ['Website'],
     awards: [],
-    image: 'https://image.thum.io/get/width/1200/https://www.astrobyab.in',
+    image: '/media/AstrobyAB.png',
     color: '#f59e0b',
     url: 'https://www.astrobyab.in'
   },
@@ -54,7 +54,7 @@ const projects = [
     description: 'Official website for Eye Media Solution.',
     technologies: ['Website'],
     awards: [],
-    image: 'https://image.thum.io/get/width/1200/https://eyemediasolution.vercel.app',
+    image: '/media/EyeMedia%20Solutions.png',
     color: '#60a5fa',
     url: 'https://eyemediasolution.vercel.app'
   },

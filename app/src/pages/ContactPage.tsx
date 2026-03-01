@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Send, Check, Mail, Phone, MapPin, Linkedin, Twitter, Instagram, Github, MessageCircle } from 'lucide-react';
+import { ArrowLeft, Send, Check, Mail, Phone, MapPin, Linkedin, Twitter, Instagram, Github, MessageCircle, X } from 'lucide-react';
 import gsap from 'gsap';
 import { submitContactLead } from '@/lib/contact';
 
@@ -138,6 +138,12 @@ export default function ContactPage() {
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitNotice, setSubmitNotice] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+
+  const showSubmitNotice = (type: 'success' | 'error', text: string) => {
+    setSubmitNotice({ type, text });
+    window.setTimeout(() => setSubmitNotice(null), 3500);
+  };
 
   const services = [
     'Web and App Development',
@@ -191,6 +197,7 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitNotice(null);
 
     try {
       await submitContactLead({
@@ -203,8 +210,10 @@ export default function ContactPage() {
         services: selectedServices,
       });
       setIsSubmitted(true);
+      showSubmitNotice('success', 'Message sent successfully.');
     } catch (error) {
       console.error('Contact page submission failed', error);
+      showSubmitNotice('error', error instanceof Error ? error.message : 'Message failed. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -212,6 +221,30 @@ export default function ContactPage() {
 
   return (
     <div ref={containerRef} className="relative min-h-screen bg-black">
+      <AnimatePresence>
+        {submitNotice && (
+          <motion.div
+            initial={{ opacity: 0, y: -16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            className={`fixed top-24 right-6 z-[60] rounded-xl px-4 py-3 text-sm border backdrop-blur flex items-center gap-3 ${
+              submitNotice.type === 'success'
+                ? 'bg-green-500/20 border-green-400/50 text-green-200'
+                : 'bg-red-500/20 border-red-400/50 text-red-200'
+            }`}
+          >
+            <span>{submitNotice.text}</span>
+            <button
+              type="button"
+              onClick={() => setSubmitNotice(null)}
+              className="rounded-md p-1 hover:bg-white/10 transition-colors"
+              aria-label="Close notification"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
       <ParticleBackground />
       
       {/* Header */}
@@ -419,7 +452,7 @@ export default function ContactPage() {
                   </a>
                   <div className="flex items-center gap-3 text-gray-400">
                     <MapPin className="w-5 h-5 text-cyan-400" />
-                    San Francisco, CA
+                    Sultanpur, Uttar Pradesh, India
                   </div>
                   <a
                     href="https://wa.me/919250818908"
@@ -508,3 +541,5 @@ export default function ContactPage() {
     </div>
   );
 }
+
+

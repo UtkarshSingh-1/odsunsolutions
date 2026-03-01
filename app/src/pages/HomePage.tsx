@@ -4,7 +4,7 @@ import { Environment, PerspectiveCamera, Float } from '@react-three/drei';
 import * as THREE from 'three';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { motion, useScroll } from 'framer-motion';
+import { motion, useScroll, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ExternalLink, X, Send, Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { submitContactLead } from '@/lib/contact';
@@ -81,10 +81,10 @@ const services = [
 
 // Portfolio projects
 const portfolioProjects = [
-  { id: 1, title: 'ASHMARK', client: 'Ashmark', category: 'websites', image: 'https://image.thum.io/get/width/1200/https://www.ashmark.in' },
-  { id: 2, title: 'NIVIRRAS COLLECTIONS', client: 'Nivirras Collections', category: 'websites', image: 'https://image.thum.io/get/width/1200/https://www.nivirrascollections.site' },
-  { id: 3, title: 'ASTROBYAB', client: 'Astrobyab', category: 'websites', image: 'https://image.thum.io/get/width/1200/https://www.astrobyab.in' },
-  { id: 4, title: 'EYE MEDIA SOLUTION', client: 'Eye Media Solution', category: 'websites', image: 'https://image.thum.io/get/width/1200/https://eyemediasolution.vercel.app' },
+  { id: 1, title: 'ASHMARK', client: 'Ashmark', category: 'websites', image: '/media/Ashmark.png' },
+  { id: 2, title: 'NIVIRRAS COLLECTIONS', client: 'Nivirras Collections', category: 'websites', image: '/media/NivirrasCollections.png' },
+  { id: 3, title: 'ASTROBYAB', client: 'Astrobyab', category: 'websites', image: '/media/AstrobyAB.png' },
+  { id: 4, title: 'EYE MEDIA SOLUTION', client: 'Eye Media Solution', category: 'websites', image: '/media/EyeMedia%20Solutions.png' },
 ];
 
 // 3D Logo Component - Scroll-based animation
@@ -985,6 +985,12 @@ function ContactSection() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitNotice, setSubmitNotice] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+
+  const showSubmitNotice = (type: 'success' | 'error', text: string) => {
+    setSubmitNotice({ type, text });
+    window.setTimeout(() => setSubmitNotice(null), 3500);
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
@@ -996,6 +1002,7 @@ function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitNotice(null);
     try {
       await submitContactLead({
         source: 'home',
@@ -1004,8 +1011,10 @@ function ContactSection() {
         message: formData.message,
       });
       setIsSubmitted(true);
+      showSubmitNotice('success', 'Message sent successfully.');
     } catch (error) {
       console.error('Home contact submission failed', error);
+      showSubmitNotice('error', error instanceof Error ? error.message : 'Message failed. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -1013,6 +1022,30 @@ function ContactSection() {
 
   return (
     <section id="contact" className="relative py-24 border-t border-white/10">
+      <AnimatePresence>
+        {submitNotice && (
+          <motion.div
+            initial={{ opacity: 0, y: -16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            className={`fixed top-24 right-6 z-[60] rounded-xl px-4 py-3 text-sm border backdrop-blur flex items-center gap-3 ${
+              submitNotice.type === 'success'
+                ? 'bg-green-500/20 border-green-400/50 text-green-200'
+                : 'bg-red-500/20 border-red-400/50 text-red-200'
+            }`}
+          >
+            <span>{submitNotice.text}</span>
+            <button
+              type="button"
+              onClick={() => setSubmitNotice(null)}
+              className="rounded-md p-1 hover:bg-white/10 transition-colors"
+              aria-label="Close notification"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
       <div className="container mx-auto px-8">
         <div className="grid lg:grid-cols-3 gap-12 items-start">
           <div>
@@ -1034,7 +1067,7 @@ function ContactSection() {
               </div>
               <div className="flex items-center gap-3">
                 <MapPin className="w-4 h-4 text-cyan-400" />
-                San Francisco, CA
+                Sultanpur, Uttar Pradesh, India
               </div>
               <a
                 href="https://wa.me/919250818908"
@@ -1208,3 +1241,5 @@ export default function HomePage() {
     </main>
   );
 }
+
+
