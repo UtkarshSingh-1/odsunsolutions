@@ -522,7 +522,7 @@ export default function PortfolioPage() {
               <Link to="/contact" className="hover:text-white transition-colors">Contact</Link>
             </div>
             <div className="text-sm text-gray-500">
-              © 2024 Odsun Solutions. All rights reserved.
+              © 2026 Odsun Solutions. All rights reserved.
             </div>
           </div>
         </div>
@@ -540,3 +540,4 @@ export default function PortfolioPage() {
     </div>
   );
 }
+

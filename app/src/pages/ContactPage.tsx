@@ -156,11 +156,11 @@ export default function ContactPage() {
   ];
 
   const budgetRanges = [
-    '$10k - $25k',
-    '$25k - $50k',
-    '$50k - $100k',
-    '$100k - $250k',
-    '$250k+',
+    'Rs15k - Rs25k',
+    'Rs25k - Rs50k',
+    'Rs50k - Rs100k',
+    'Rs100k - Rs200k',
+    'Rs200k+',
     'Not sure yet',
   ];
 
@@ -372,8 +372,18 @@ export default function ContactPage() {
                     </div>
                   </div>
 
+                  <FormInput
+                    label="Message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    placeholder="Tell us about your project..."
+                    isTextarea
+                  />
+
                   {/* Services */}
-                  <div className="mb-6">
+                  <div className="mt-6">
                     <label className="block text-xs text-gray-500 mb-3 tracking-wider uppercase">
                       Services Interested In
                     </label>
@@ -388,16 +398,6 @@ export default function ContactPage() {
                       ))}
                     </div>
                   </div>
-
-                  <FormInput
-                    label="Message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    placeholder="Tell us about your project..."
-                    isTextarea
-                  />
 
                   <motion.button
                     type="submit"
@@ -533,7 +533,7 @@ export default function ContactPage() {
               <Link to="/contact" className="hover:text-white transition-colors">Contact</Link>
             </div>
             <div className="text-sm text-gray-500">
-              © 2024 Odsun Solutions. All rights reserved.
+              © 2026 Odsun Solutions. All rights reserved.
             </div>
           </div>
         </div>
@@ -541,5 +541,6 @@ export default function ContactPage() {
     </div>
   );
 }
+
 
 
