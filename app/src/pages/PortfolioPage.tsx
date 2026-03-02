@@ -56,7 +56,7 @@ const projects = [
     awards: [],
     image: '/media/EyeMedia%20Solutions.png',
     color: '#60a5fa',
-    url: 'https://eyemediasolution.vercel.app'
+    url: 'https://www.eyemediasolutions.in/'
   },
 ];
 
