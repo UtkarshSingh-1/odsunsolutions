@@ -480,6 +480,33 @@ function ServiceDetailCard({ service, isActive }: { service: typeof services[0];
 }
 
 // Hero Section
+function AnimatedText({
+  text,
+  className,
+  startDelay = 0,
+}: {
+  text: string;
+  className: string;
+  startDelay?: number;
+}) {
+  return (
+    <p className={className}>
+      {text.split('').map((char, index) => (
+        <motion.span
+          key={`${char}-${index}`}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: startDelay + index * 0.05, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          className="inline-block"
+          style={{ width: char === ' ' ? '0.35em' : undefined }}
+        >
+          {char === ' ' ? '\u00A0' : char}
+        </motion.span>
+      ))}
+    </p>
+  );
+}
+
 function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
 
@@ -490,9 +517,9 @@ function HeroSection() {
       className="relative h-screen w-full"
       style={{ minHeight: '100vh' }}
     >
-      <div className="absolute top-6 left-6 z-20">
+      <div className="absolute top-4 left-4 md:top-6 md:left-6 z-20">
         <video
-          className="h-16 w-auto"
+          className="h-12 md:h-16 w-auto"
           autoPlay
           muted
           loop
@@ -504,9 +531,22 @@ function HeroSection() {
           <source src="/media/logoanimation.mp4" type="video/mp4" />
         </video>
       </div>
+      <div className="absolute inset-x-4 top-1/2 -translate-y-1/2 z-20 flex justify-center md:justify-start md:left-12 md:inset-x-auto">
+        <div className="w-full max-w-[92vw] md:max-w-none px-4 py-3 rounded-2xl bg-black/35 border border-cyan-300/35 backdrop-blur-sm">
+          <AnimatedText
+            text="ODSUN SOLUTIONS"
+            className="text-xl sm:text-2xl md:text-3xl font-bold tracking-[0.12em] md:tracking-[0.24em] text-white text-center md:text-left mb-2"
+          />
+          <AnimatedText
+            text="Onward Development under the Sun"
+            className="text-sm sm:text-base md:text-xl font-bold tracking-[0.04em] md:tracking-[0.08em] text-cyan-200 text-center md:text-left drop-shadow-[0_0_14px_rgba(34,211,238,0.55)] leading-relaxed"
+            startDelay={0.2}
+          />
+        </div>
+      </div>
       {/* CTA Button */}
       <motion.div 
-        className="absolute bottom-20 left-12 z-20"
+        className="absolute bottom-20 left-1/2 -translate-x-1/2 md:left-12 md:translate-x-0 z-20"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1, duration: 0.8 }}
@@ -517,7 +557,7 @@ function HeroSection() {
             const target = document.getElementById('services');
             target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }}
-          className="group relative px-8 py-4 rounded-full bg-white/5 backdrop-blur-sm border border-white/20 text-white font-medium tracking-wider overflow-hidden transition-all hover:bg-white/10 hover:border-white/40"
+          className="group relative px-6 md:px-8 py-3 md:py-4 rounded-full bg-white/5 backdrop-blur-sm border border-white/20 text-white text-sm md:text-base font-medium tracking-wide md:tracking-wider overflow-hidden transition-all hover:bg-white/10 hover:border-white/40"
         >
           <span className="relative z-10 flex items-center gap-3">
             See Our Work
