@@ -1199,7 +1199,7 @@ function Footer() {
     <footer className="py-12 border-t border-white/10">
       <div className="container mx-auto px-8">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="text-2xl font-light tracking-wider">
+          <div className="text-2xl font-light tracking-wider flex flex-col items-center md:items-start gap-2">
             <video
               className="h-12 w-auto"
               autoPlay
@@ -1212,6 +1212,10 @@ function Footer() {
               <source src="/media/logoanimation.webm" type="video/webm" />
               <source src="/media/logoanimation.mp4" type="video/mp4" />
             </video>
+            <AnimatedText
+              text="Onward Development under the Sun"
+              className="text-xs sm:text-sm font-bold tracking-[0.04em] text-cyan-200 text-center md:text-left"
+            />
           </div>
           
           <div className="flex gap-8 text-sm text-gray-400">
