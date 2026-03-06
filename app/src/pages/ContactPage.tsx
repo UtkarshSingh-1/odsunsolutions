@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Send, Check, Mail, Phone, MapPin, Linkedin, Twitter, Instagram, Github, MessageCircle, X } from 'lucide-react';
+import { ArrowLeft, Send, Check, Mail, Phone, MapPin, Linkedin, Instagram, MessageCircle, X } from 'lucide-react';
 import gsap from 'gsap';
 import { submitContactLead } from '@/lib/contact';
 import { applySeoMeta } from '@/lib/seo';
@@ -491,10 +491,8 @@ export default function ContactPage() {
                 <h3 className="text-lg font-light mb-4">Follow Us</h3>
                 <div className="flex gap-4">
                   {[
-                    { icon: Twitter, href: '#' },
                     { icon: Instagram, href: 'https://www.instagram.com/odsunsolutions.in/' },
                     { icon: Linkedin, href: 'https://www.linkedin.com/company/odsun-solutions/' },
-                    { icon: Github, href: '#' },
                   ].map(({ icon: Icon, href }, idx) => (
                     <motion.a
                       key={idx}
