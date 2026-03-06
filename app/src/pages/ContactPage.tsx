@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, Send, Check, Mail, Phone, MapPin, Linkedin, Twitter, Instagram, Github, MessageCircle, X } from 'lucide-react';
 import gsap from 'gsap';
 import { submitContactLead } from '@/lib/contact';
+import { applySeoMeta } from '@/lib/seo';
 
 // Particle background
 function ParticleBackground() {
@@ -173,6 +174,21 @@ export default function ContactPage() {
   const headerY = useTransform(scrollYProgress, [0, 0.2], [0, -100]);
 
   useEffect(() => {
+    applySeoMeta({
+      title: 'Contact Odsun Solutions | Web, AI, Marketing and ERP Services in India',
+      description:
+        'Contact Odsun Solutions for web and app development, AI video production, social media marketing, graphic design, AI automation, and ERP services across India.',
+      keywords:
+        'contact web development company india, hire app developers india, ai services company india, social media marketing contact india, erp implementation company india, digital agency contact uttar pradesh',
+      path: '/contact',
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'ContactPage',
+        name: 'Contact Odsun Solutions',
+        url: 'https://odsunsolutions.in/contact',
+      },
+    });
+
     gsap.fromTo('.animate-in',
       { opacity: 0, y: 40 },
       { opacity: 1, y: 0, stagger: 0.1, duration: 0.8, ease: 'power3.out', delay: 0.3 }

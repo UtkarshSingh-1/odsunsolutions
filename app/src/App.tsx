@@ -1,5 +1,5 @@
 import { Suspense, lazy } from 'react';
-import { HashRouter, Routes, Route, useLocation, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation, Link } from 'react-router-dom';
 import { Volume2, VolumeX, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useRef, useEffect, createContext, useContext } from 'react';
@@ -222,11 +222,11 @@ function AppContent() {
 // Main App Component
 function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <AudioProvider>
         <AppContent />
       </AudioProvider>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 

@@ -8,6 +8,7 @@ import { motion, useScroll, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ExternalLink, X, Send, Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { submitContactLead } from '@/lib/contact';
+import { applySeoMeta } from '@/lib/seo';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -1237,6 +1238,33 @@ function Footer() {
 export default function HomePage() {
   const workRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    applySeoMeta({
+      title: 'Odsun Solutions India | Web Development, AI Services, Marketing & ERP',
+      description:
+        'Odsun Solutions helps businesses in India with web and app development, AI promo videos, social media marketing, graphic design, AI agent integration, and ERP systems.',
+      keywords:
+        'web development company india, app development india, ai promo video services india, video editing agency india, social media marketing agency india, graphic design services india, logo design india, ai agent integration india, erp software development india, digital agency uttar pradesh',
+      path: '/',
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'ProfessionalService',
+        name: 'Odsun Solutions',
+        url: 'https://odsunsolutions.in/',
+        image: 'https://odsunsolutions.in/media/logo3.png',
+        email: 'contact@odsunsolutions.in',
+        telephone: '+91 9250818908',
+        areaServed: 'India',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Sultanpur',
+          addressRegion: 'Uttar Pradesh',
+          addressCountry: 'IN',
+        },
+      },
+    });
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {

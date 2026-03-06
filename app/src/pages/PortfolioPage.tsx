@@ -3,6 +3,7 @@ import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ExternalLink, Filter, X, ChevronRight, Award, Calendar, Users } from 'lucide-react';
 import gsap from 'gsap';
+import { applySeoMeta } from '@/lib/seo';
 
 // Portfolio projects data
 const projects = [
@@ -300,6 +301,21 @@ export default function PortfolioPage() {
   const headerY = useTransform(scrollYProgress, [0, 0.2], [0, -100]);
 
   useEffect(() => {
+    applySeoMeta({
+      title: 'Odsun Solutions Portfolio | Website and Digital Projects in India',
+      description:
+        'Explore Odsun Solutions portfolio of website and digital projects delivered for Indian businesses across industries.',
+      keywords:
+        'web development portfolio india, digital agency portfolio india, website design projects india, app development case studies india, creative agency work india',
+      path: '/portfolio',
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: 'Odsun Solutions Portfolio',
+        url: 'https://odsunsolutions.in/portfolio',
+      },
+    });
+
     gsap.fromTo('.animate-in',
       { opacity: 0, y: 40 },
       { opacity: 1, y: 0, stagger: 0.1, duration: 0.8, ease: 'power3.out', delay: 0.3 }

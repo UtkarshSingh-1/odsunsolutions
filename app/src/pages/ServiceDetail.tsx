@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Check, Clapperboard, Cpu, Database, Globe, Palette, Rocket, Share2 } from 'lucide-react';
 import gsap from 'gsap';
+import { applySeoMeta } from '@/lib/seo';
 
 // Services data (same as HomePage)
 const services = [
@@ -182,7 +183,28 @@ export default function ServiceDetail() {
   useEffect(() => {
     if (!service) {
       navigate('/');
+      return;
     }
+
+    applySeoMeta({
+      title: `${service.title} Services in India | Odsun Solutions`,
+      description: `${service.title} by Odsun Solutions for businesses in India. ${service.description}`,
+      keywords: `${service.title.toLowerCase()} india, ${service.label.toLowerCase()} services india, digital services india, business growth services india, odsunsolutions`,
+      path: `/service/${service.id}`,
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        serviceType: service.title,
+        name: service.title,
+        provider: {
+          '@type': 'Organization',
+          name: 'Odsun Solutions',
+          url: 'https://odsunsolutions.in/',
+        },
+        areaServed: 'India',
+        url: `https://odsunsolutions.in/service/${service.id}`,
+      },
+    });
     
     // Animate elements on load
     gsap.fromTo('.animate-in',
