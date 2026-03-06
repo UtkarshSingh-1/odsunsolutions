@@ -179,7 +179,7 @@ export default function ContactPage() {
       description:
         'Contact Odsun Solutions for web and app development, AI video production, social media marketing, graphic design, AI automation, and ERP services across India.',
       keywords:
-        'contact web development company india, hire app developers india, ai services company india, social media marketing contact india, erp implementation company india, digital agency contact uttar pradesh',
+        'contact best it consultancy in india, hire best it consultants india, contact web development company india, hire app developers india, ai services company india, social media marketing agency india, erp implementation company india, it consulting company contact india, digital agency contact uttar pradesh',
       path: '/contact',
       jsonLd: {
         '@context': 'https://schema.org',

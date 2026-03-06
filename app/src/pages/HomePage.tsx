@@ -1245,7 +1245,7 @@ export default function HomePage() {
       description:
         'Odsun Solutions helps businesses in India with web and app development, AI promo videos, social media marketing, graphic design, AI agent integration, and ERP systems.',
       keywords:
-        'web development company india, app development india, ai promo video services india, video editing agency india, social media marketing agency india, graphic design services india, logo design india, ai agent integration india, erp software development india, digital agency uttar pradesh',
+        'best it consultancy in india, top it consultancy india, best digital agency in india, web development company india, app development company india, ai development company india, ai promo video services india, video editing agency india, social media marketing agency india, graphic design services india, logo design company india, ai agent integration india, erp software development india, digital transformation services india, it services company uttar pradesh',
       path: '/',
       jsonLd: {
         '@context': 'https://schema.org',

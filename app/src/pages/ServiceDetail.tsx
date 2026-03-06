@@ -189,7 +189,7 @@ export default function ServiceDetail() {
     applySeoMeta({
       title: `${service.title} Services in India | Odsun Solutions`,
       description: `${service.title} by Odsun Solutions for businesses in India. ${service.description}`,
-      keywords: `${service.title.toLowerCase()} india, ${service.label.toLowerCase()} services india, digital services india, business growth services india, odsunsolutions`,
+      keywords: `best it consultancy in india, top it consultancy india, ${service.title.toLowerCase()} india, ${service.label.toLowerCase()} services india, digital transformation services india, business growth services india, odsunsolutions`,
       path: `/service/${service.id}`,
       jsonLd: {
         '@context': 'https://schema.org',

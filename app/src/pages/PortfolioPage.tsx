@@ -306,7 +306,7 @@ export default function PortfolioPage() {
       description:
         'Explore Odsun Solutions portfolio of website and digital projects delivered for Indian businesses across industries.',
       keywords:
-        'web development portfolio india, digital agency portfolio india, website design projects india, app development case studies india, creative agency work india',
+        'best it consultancy projects india, top digital agency portfolio india, web development portfolio india, website design projects india, app development case studies india, ai services portfolio india, creative agency work india',
       path: '/portfolio',
       jsonLd: {
         '@context': 'https://schema.org',
