@@ -493,7 +493,7 @@ export default function ContactPage() {
                   {[
                     { icon: Twitter, href: '#' },
                     { icon: Instagram, href: 'https://www.instagram.com/odsunsolutions.in/' },
-                    { icon: Linkedin, href: '#' },
+                    { icon: Linkedin, href: 'https://www.linkedin.com/company/odsun-solutions/' },
                     { icon: Github, href: '#' },
                   ].map(({ icon: Icon, href }, idx) => (
                     <motion.a
