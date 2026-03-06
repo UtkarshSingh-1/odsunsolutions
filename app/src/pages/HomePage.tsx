@@ -80,6 +80,25 @@ const services = [
   },
 ];
 
+const homeFaqs = [
+  {
+    q: 'How long does a typical project take?',
+    a: 'Most projects run 2-6 weeks depending on scope and approvals.',
+  },
+  {
+    q: 'Do you provide ongoing support?',
+    a: 'Yes. We offer monthly support, maintenance, and content updates.',
+  },
+  {
+    q: 'Can you work with my existing brand or assets?',
+    a: 'Absolutely. We can use your current brand or refresh it.',
+  },
+  {
+    q: 'What do you need to get started?',
+    a: 'A short brief, goals, references, and access to existing assets.',
+  },
+];
+
 // Portfolio projects
 const portfolioProjects = [
   { id: 1, title: 'ASHMARK', client: 'Ashmark', category: 'websites', image: '/media/Ashmark.png' },
@@ -976,26 +995,43 @@ function CaseHighlightsSection() {
   );
 }
 
-function FAQSection() {
-  const faqs = [
-    {
-      q: 'How long does a typical project take?',
-      a: 'Most projects run 2–6 weeks depending on scope and approvals.'
-    },
-    {
-      q: 'Do you provide ongoing support?',
-      a: 'Yes. We offer monthly support, maintenance, and content updates.'
-    },
-    {
-      q: 'Can you work with my existing brand or assets?',
-      a: 'Absolutely. We can use your current brand or refresh it.'
-    },
-    {
-      q: 'What do you need to get started?',
-      a: 'A short brief, goals, references, and access to existing assets.'
-    },
-  ];
+function SeoContentSection() {
+  return (
+    <section className="relative py-24 border-t border-white/10">
+      <div className="container mx-auto px-8">
+        <div className="max-w-5xl">
+          <h2 className="text-4xl md:text-5xl font-light mb-6">
+            Best IT Consultancy in India for Growth-Focused Businesses
+          </h2>
+          <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-4">
+            Odsun Solutions works as a full-service IT consultancy in India for startups, SMEs, and enterprise
+            teams that need fast execution with clear outcomes. Our delivery combines product strategy, design,
+            engineering, and performance marketing so businesses can launch faster and scale with confidence.
+          </p>
+          <p className="text-gray-400 text-base md:text-lg leading-relaxed mb-8">
+            We deliver end-to-end solutions including web and app development, AI integrations, AI video production,
+            social media marketing, branding, and ERP implementation. If you are searching for the best IT
+            consultancy in India to manage both technology and growth, our team is structured to handle the full
+            lifecycle from discovery to post-launch support.
+          </p>
+          <div className="grid md:grid-cols-3 gap-4">
+            <Link to="/service/web-app-development" className="bg-white/5 border border-white/10 rounded-2xl p-4 hover:bg-white/10 transition-colors">
+              Web and App Development Services
+            </Link>
+            <Link to="/service/ai-agent-integration" className="bg-white/5 border border-white/10 rounded-2xl p-4 hover:bg-white/10 transition-colors">
+              AI Agent Integration Services
+            </Link>
+            <Link to="/service/social-media-marketing" className="bg-white/5 border border-white/10 rounded-2xl p-4 hover:bg-white/10 transition-colors">
+              Social Media Marketing Services
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
+function FAQSection() {
   return (
     <section className="relative py-24 border-y border-white/10">
       <div className="container mx-auto px-8">
@@ -1006,7 +1042,7 @@ function FAQSection() {
           </p>
         </div>
         <div className="grid md:grid-cols-2 gap-6">
-          {faqs.map((item) => (
+          {homeFaqs.map((item) => (
             <div key={item.q} className="bg-white/5 border border-white/10 rounded-2xl p-6">
               <div className="text-lg mb-2">{item.q}</div>
               <p className="text-sm text-gray-400">{item.a}</p>
@@ -1241,27 +1277,63 @@ export default function HomePage() {
 
   useEffect(() => {
     applySeoMeta({
-      title: 'Odsun Solutions India | Web Development, AI Services, Marketing & ERP',
+      title: 'Best IT Consultancy in India | Odsun Solutions',
       description:
-        'Odsun Solutions helps businesses in India with web and app development, AI promo videos, social media marketing, graphic design, AI agent integration, and ERP systems.',
+        'Odsun Solutions is a growth-focused IT consultancy in India delivering web and app development, AI services, digital marketing, design, and ERP implementation.',
       keywords:
         'best it consultancy in india, top it consultancy india, best digital agency in india, web development company india, app development company india, ai development company india, ai promo video services india, video editing agency india, social media marketing agency india, graphic design services india, logo design company india, ai agent integration india, erp software development india, digital transformation services india, it services company uttar pradesh',
       path: '/',
       jsonLd: {
         '@context': 'https://schema.org',
-        '@type': 'ProfessionalService',
-        name: 'Odsun Solutions',
-        url: 'https://odsunsolutions.in/',
-        image: 'https://odsunsolutions.in/media/logo3.png',
-        email: 'contact@odsunsolutions.in',
-        telephone: '+91 9250818908',
-        areaServed: 'India',
-        address: {
-          '@type': 'PostalAddress',
-          addressLocality: 'Sultanpur',
-          addressRegion: 'Uttar Pradesh',
-          addressCountry: 'IN',
-        },
+        '@graph': [
+          {
+            '@type': 'Organization',
+            '@id': 'https://odsunsolutions.in/#organization',
+            name: 'Odsun Solutions',
+            url: 'https://odsunsolutions.in/',
+            logo: 'https://odsunsolutions.in/media/logo3.png',
+            email: 'contact@odsunsolutions.in',
+            telephone: '+91 9250818908',
+            areaServed: 'India',
+            address: {
+              '@type': 'PostalAddress',
+              addressLocality: 'Sultanpur',
+              addressRegion: 'Uttar Pradesh',
+              addressCountry: 'IN',
+            },
+          },
+          {
+            '@type': 'WebSite',
+            '@id': 'https://odsunsolutions.in/#website',
+            url: 'https://odsunsolutions.in/',
+            name: 'Odsun Solutions',
+            inLanguage: 'en-IN',
+          },
+          {
+            '@type': 'ItemList',
+            name: 'IT and Digital Services by Odsun Solutions',
+            itemListElement: services.map((service, index) => ({
+              '@type': 'ListItem',
+              position: index + 1,
+              item: {
+                '@type': 'Service',
+                name: service.title,
+                url: `https://odsunsolutions.in/service/${service.id}`,
+              },
+            })),
+          },
+          {
+            '@type': 'FAQPage',
+            mainEntity: homeFaqs.map((faq) => ({
+              '@type': 'Question',
+              name: faq.q,
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: faq.a,
+              },
+            })),
+          },
+        ],
       },
     });
   }, []);
@@ -1301,6 +1373,7 @@ export default function HomePage() {
       <div className="relative z-10">
         <HeroSection />
         <ServicesSection />
+        <SeoContentSection />
         <PortfolioSection sectionRef={workRef} />
         <ProcessSection />
         <ProofSection />

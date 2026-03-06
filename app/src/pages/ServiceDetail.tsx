@@ -193,16 +193,38 @@ export default function ServiceDetail() {
       path: `/service/${service.id}`,
       jsonLd: {
         '@context': 'https://schema.org',
-        '@type': 'Service',
-        serviceType: service.title,
-        name: service.title,
-        provider: {
-          '@type': 'Organization',
-          name: 'Odsun Solutions',
-          url: 'https://odsunsolutions.in/',
-        },
-        areaServed: 'India',
-        url: `https://odsunsolutions.in/service/${service.id}`,
+        '@graph': [
+          {
+            '@type': 'Service',
+            serviceType: service.title,
+            name: service.title,
+            description: service.longDescription,
+            provider: {
+              '@type': 'Organization',
+              name: 'Odsun Solutions',
+              url: 'https://odsunsolutions.in/',
+            },
+            areaServed: 'India',
+            url: `https://odsunsolutions.in/service/${service.id}`,
+          },
+          {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://odsunsolutions.in/',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: service.title,
+                item: `https://odsunsolutions.in/service/${service.id}`,
+              },
+            ],
+          },
+        ],
       },
     });
     
