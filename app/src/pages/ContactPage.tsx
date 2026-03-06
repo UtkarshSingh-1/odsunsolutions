@@ -492,13 +492,15 @@ export default function ContactPage() {
                 <div className="flex gap-4">
                   {[
                     { icon: Twitter, href: '#' },
-                    { icon: Instagram, href: '#' },
+                    { icon: Instagram, href: 'https://www.instagram.com/odsunsolutions.in/' },
                     { icon: Linkedin, href: '#' },
                     { icon: Github, href: '#' },
                   ].map(({ icon: Icon, href }, idx) => (
                     <motion.a
                       key={idx}
                       href={href}
+                      target={href.startsWith('http') ? '_blank' : undefined}
+                      rel={href.startsWith('http') ? 'noreferrer' : undefined}
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
                       className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors"
